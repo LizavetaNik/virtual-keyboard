@@ -38,7 +38,7 @@
 
 .button_style_space {
   text-align: center;
-  width: 30%;
+  width: 50%;
   line-height: 65px;
   margin-right: 5px;
   cursor: pointer;
@@ -54,6 +54,25 @@
   background-color: #ddd;
 }
 
+.button_style_func {
+  text-align: center;
+  width: 15%;
+  line-height: 40px;
+  margin-right: 5px;
+  background-color: #999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button_style_func:active {
+  background-color: #565656;
+  transform: scale(0.85);
+}
+
+.button_style_func:hover {
+  background-color: #ddd;
+}
+
 .exclamation-mark {
   float: left;
   font-size: 20px;
@@ -65,8 +84,6 @@
   font-size: 28px;
   line-height: 28px;
 }
-
-
 
 .highlighted{
   background-color: rgb(106, 106, 221);
