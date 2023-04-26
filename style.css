@@ -2,10 +2,13 @@
 .wrapper {
   color: #333;
   font-family: Lato, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#output-field{
-  width: 100%;
+#output-field {
+  width: 80%;
   height: 120px;
 }
 
@@ -16,6 +19,7 @@
   align-items: center;
   background-color: #eee;
   padding: 10px;
+  width: 80%;
 }
 
 .button_style {
@@ -39,8 +43,9 @@
 .button_style_space {
   text-align: center;
   width: 50%;
-  line-height: 65px;
+  line-height: 40px;
   margin-right: 5px;
+  color: #eee;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -71,18 +76,6 @@
 
 .button_style_func:hover {
   background-color: #ddd;
-}
-
-.exclamation-mark {
-  float: left;
-  font-size: 20px;
-  line-height: 20px;
-}
-
-.number {
-  display: block;
-  font-size: 28px;
-  line-height: 28px;
 }
 
 .highlighted{
