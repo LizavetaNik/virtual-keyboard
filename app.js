@@ -177,7 +177,7 @@ newHeading.appendChild(textNode);
 document.body.appendChild(newHeading);
 
 // Создаем элемент поля ввода текста
-const inputField = document.createElement('input');
+const inputField = document.createElement('textarea');
 inputField.type = 'text';
 inputField.id = 'output-field';
 
