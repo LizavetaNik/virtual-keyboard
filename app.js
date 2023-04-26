@@ -145,25 +145,8 @@ function createButton(engName, ruName, className) {
       clickAlt = true;
       return;
     }
-
-    if( engName === '\u2191'){ // стрелка вверх
-      //todo func
-      return;
-    }
-    if( engName === '\u2190'){ // стрелка влево
-      //todo func
-      return;
-    }
-    if( engName === '\u2193'){ // стрелка вниз
-      //todo func
-      return;
-    }
-    if( engName === '\u2192'){ // стрелка вправо
-      //todo func
-      return;
-    }
    
-    if( engLang ){
+    if( lang === 'en' ){
       inputField.value = inputField.value + engName.toLowerCase();
     } else{
       if( engName === '.' || engName === ',' || engName === '/' || engName === '\u2191'){
