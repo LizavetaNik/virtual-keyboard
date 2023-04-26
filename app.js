@@ -170,6 +170,12 @@ function createLine(start, nextStart){
   document.body.appendChild(keyboardLine);
 }
 
+// Создаем новый элемент h3
+var newHeading = document.createElement("h3");
+var textNode = document.createTextNode("Operating systems: Windows. Use left Ctrl + Alt to switch language.");
+newHeading.appendChild(textNode);
+document.body.appendChild(newHeading);
+
 // Создаем элемент поля ввода текста
 const inputField = document.createElement('input');
 inputField.type = 'text';
