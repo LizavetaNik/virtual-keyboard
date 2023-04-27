@@ -14,6 +14,8 @@ const startLine6 = 64;
 
 let clickCtrl = false;
 let clickAlt = false;
+let clickCapsLock = false;
+let keydownShift = false;
 
 function createArrButton(){
   //line1 - [0, 13]
@@ -34,45 +36,45 @@ function createArrButton(){
 
   //line2 - [14, 28]
   arrButton.push(createButton('Tab', 'Tab', 'button_style_func'));
-  arrButton.push(createButton('Q', '\u0419'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('W', '\u0446'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('E', '\u0423'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('R', '\u041A'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('T', '\u0415'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('Y', '\u041D'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('U', '\u0413'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('I', '\u0428'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('O', '\u0429'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('P', '\u0417'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('[', '\u0425'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton(']', '\u042A'.toUpperCase(), 'button_style'));
+  arrButton.push(createButton('Q', '\u0419', 'button_style'));
+  arrButton.push(createButton('W', '\u0446', 'button_style'));
+  arrButton.push(createButton('E', '\u0423', 'button_style'));
+  arrButton.push(createButton('R', '\u041A', 'button_style'));
+  arrButton.push(createButton('T', '\u0415', 'button_style'));
+  arrButton.push(createButton('Y', '\u041D', 'button_style'));
+  arrButton.push(createButton('U', '\u0413', 'button_style'));
+  arrButton.push(createButton('I', '\u0428', 'button_style'));
+  arrButton.push(createButton('O', '\u0429', 'button_style'));
+  arrButton.push(createButton('P', '\u0417', 'button_style'));
+  arrButton.push(createButton('[', '\u0425', 'button_style'));
+  arrButton.push(createButton(']', '\u042A', 'button_style'));
   arrButton.push(createButton('\\', ' / ', 'button_style'));
   arrButton.push(createButton('DEL', 'DEL', 'button_style_func'));
 
   //line3 - [29, 41]
   arrButton.push(createButton('Caps Lock', 'Caps Lock', 'button_style_func'));
-  arrButton.push(createButton('A', '\u0424'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('S', '\u042B'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('D', '\u0432'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('F', '\u0430'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('G', '\u043F'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('H', '\u0440'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('J', '\u043E'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('K', '\u043B'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('L', '\u0434'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton(';', '\u0436'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('\u0027', '\u044D'.toUpperCase(), 'button_style'));
+  arrButton.push(createButton('A', '\u0424', 'button_style'));
+  arrButton.push(createButton('S', '\u042B', 'button_style'));
+  arrButton.push(createButton('D', '\u0432', 'button_style'));
+  arrButton.push(createButton('F', '\u0430', 'button_style'));
+  arrButton.push(createButton('G', '\u043F', 'button_style'));
+  arrButton.push(createButton('H', '\u0440', 'button_style'));
+  arrButton.push(createButton('J', '\u043E', 'button_style'));
+  arrButton.push(createButton('K', '\u043B', 'button_style'));
+  arrButton.push(createButton('L', '\u0434', 'button_style'));
+  arrButton.push(createButton(';', '\u0436', 'button_style'));
+  arrButton.push(createButton('\u0027', '\u044D', 'button_style'));
   arrButton.push(createButton('Enter', 'Enter', 'button_style_func'));
 
   //line4 - [42, 54]
   arrButton.push(createButton('Shift', 'Shift', 'button_style_func'));
-  arrButton.push(createButton('Z', '\u044F'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('X', '\u0447'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('C', '\u0441'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('V', '\u043C'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('B', '\u0438'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('N', '\u0442'.toUpperCase(), 'button_style'));
-  arrButton.push(createButton('M', '\u044C'.toUpperCase(), 'button_style'));
+  arrButton.push(createButton('Z', '\u044F', 'button_style'));
+  arrButton.push(createButton('X', '\u0447', 'button_style'));
+  arrButton.push(createButton('C', '\u0441', 'button_style'));
+  arrButton.push(createButton('V', '\u043C', 'button_style'));
+  arrButton.push(createButton('B', '\u0438', 'button_style'));
+  arrButton.push(createButton('N', '\u0442', 'button_style'));
+  arrButton.push(createButton('M', '\u044C', 'button_style'));
   arrButton.push(createButton('.', '.', 'button_style'));
   arrButton.push(createButton(',', ',', 'button_style'));
   arrButton.push(createButton('/', '/', 'button_style'));
@@ -96,35 +98,50 @@ function createButton(engName, ruName, className) {
   button.classList.add(className);
   
   if( lang === 'en' ){
-    button.innerHTML = ruName;
-    button.title = engName;
+    button.innerHTML = ruName.toLowerCase();
+    button.title = engName.toLowerCase();
   }else{
-    button.innerHTML = engName;
-    button.title = ruName;
+    button.innerHTML = engName.toLowerCase();
+    button.title = ruName.toLowerCase();
   }
 
   button.id = engName.toLowerCase(); 
 
   button.addEventListener('click', () => {
-    console.log(`Click button ${engName}`);
     if( engName === 'Backspace'){
-      //todo func
+      inputField.value = inputField.value.slice(0, -1);
       return;
     }
     if( engName === 'Tab'){
-      //todo func
+      inputField.value = inputField.value + '   ';
       return;
     }
     if( engName === 'DEL'){
-      //todo func
+      const cursorPosition = inputField.selectionStart;
+      const textBeforeCursor = inputField.value.substring(0, cursorPosition);
+      const textAfterCursor = inputField.value.substring(cursorPosition + 1);
+      inputField.value = textBeforeCursor + textAfterCursor;
+      inputField.setSelectionRange(cursorPosition, cursorPosition);
       return;
     }
     if( engName === 'Caps Lock'){
-      //todo func
+      const tmp = !clickCapsLock;
+      clickCapsLock = tmp;
+      
+      changeCaseButton();
+      if(clickCapsLock){
+        button.classList.add('highlighted');
+      }else{
+        button.classList.remove('highlighted');
+      }
       return;
     }
     if( engName === 'Enter'){
-      //todo func
+      const start = inputField.selectionStart;
+      const end = inputField.selectionEnd;
+      const value = inputField.value;
+      inputField.value = value.substring(0, start) + '\n' + value.substring(end);
+      inputField.selectionStart = inputField.selectionEnd = start + 1;
       return;
     }
     if( engName === 'Shift'){
@@ -145,19 +162,47 @@ function createButton(engName, ruName, className) {
       clickAlt = true;
       return;
     }
-   
-    if( lang === 'en' ){
-      inputField.value = inputField.value + engName.toLowerCase();
-    } else{
-      if( engName === '.' || engName === ',' || engName === '/' || engName === '\u2191'){
-        inputField.value = inputField.value + engName.toLowerCase();
-      }else{
-        inputField.value = inputField.value + ruName.toLowerCase();
-      } 
+    if( engName === '--'){
+      inputField.value = inputField.value + ' ';
+      return;
     }
+   
+    inputField.value = inputField.value + button.innerHTML; 
   });
 
   return button;
+}
+
+function changeCaseButton(){
+  for( let i = 0; i < arrButton.length; i++){
+    if( clickCapsLock || keydownShift ){
+      if( arrButton[i].id != 'Backspace'.toLowerCase() && 
+          arrButton[i].id != 'Tab'.toLowerCase() &&
+          arrButton[i].id != 'Caps Lock'.toLowerCase() &&
+          arrButton[i].id != 'Enter'.toLowerCase() &&
+          arrButton[i].id != 'Shift'.toLowerCase() &&
+          arrButton[i].id != 'Ctrl'.toLowerCase() &&
+          arrButton[i].id != 'Win'.toLowerCase() &&
+          arrButton[i].id != 'Alt'.toLowerCase() &&
+          arrButton[i].id != '--' ){
+        arrButton[i].innerHTML = arrButton[i].innerHTML.toUpperCase();
+        arrButton[i].title = arrButton[i].title.toUpperCase();
+      }  
+    }else{
+      if( arrButton[i].id != 'Backspace'.toLowerCase() && 
+          arrButton[i].id != 'Tab'.toLowerCase() &&
+          arrButton[i].id != 'Caps Lock'.toLowerCase() &&
+          arrButton[i].id != 'Enter'.toLowerCase() &&
+          arrButton[i].id != 'Shift'.toLowerCase() &&
+          arrButton[i].id != 'Ctrl'.toLowerCase() &&
+          arrButton[i].id != 'Win'.toLowerCase() &&
+          arrButton[i].id != 'Alt'.toLowerCase() &&
+          arrButton[i].id != '--' ){
+        arrButton[i].innerHTML = arrButton[i].innerHTML.toLowerCase();
+        arrButton[i].title = arrButton[i].title.toLowerCase(); 
+      }
+    } 
+  }
 }
 
 function changeEngNameButton(){
@@ -207,6 +252,7 @@ changeEngNameButton();
 
 // Добавляем эффект нажатие на кнопку на физической клавиатуре подсвечивает кнопку на виртуальной 2) - добавить кнопку в физ.клав.
 function checKeyPressed(keyPressed) {
+  console.log(keyPressed);
   if( keyPressed === 'control'){
     return 'ctrl';
   }
@@ -219,6 +265,10 @@ function checKeyPressed(keyPressed) {
     return 'caps lock';
   }
 
+  if( keyPressed === ' '){
+    return '--';
+  }
+
   return keyPressed;
 }
 
@@ -228,10 +278,18 @@ document.addEventListener('keydown', (event) => {
 
   const buttonLine = arrButton.find( item => item.id == keyPressed );
   if( buttonLine ){
-    buttonLine.classList.add('highlighted');
-    buttonLine.click();
+    if( buttonLine.id === 'caps lock'){
+      buttonLine.click();
+    }else{
+      buttonLine.classList.add('highlighted');
+      buttonLine.click();
+    }  
+    if( buttonLine.id === 'shift' ){
+      keydownShift = true;
+      changeCaseButton();
+    } 
   }
-
+  
   if (clickAlt && clickCtrl ){
     if( lang === 'en'){
       lang = 'ru'; 
@@ -250,7 +308,13 @@ document.addEventListener('keyup', (event) => {
 
   const buttonLine = arrButton.find( item => item.id == keyPressed );
   if( buttonLine ){
-    buttonLine.classList.remove('highlighted');
+    if( buttonLine.id != 'caps lock'){
+      buttonLine.classList.remove('highlighted');
+    }
+    if( buttonLine.id === 'shift' ){
+      keydownShift = false;
+      changeCaseButton();
+    } 
   }
 
   if (clickAlt){
