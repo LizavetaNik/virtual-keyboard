@@ -1,0 +1,83 @@
+/* Basic Style */
+.wrapper {
+  color: #333;
+  font-family: Lato, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#output-field {
+  width: 80%;
+  height: 120px;
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  padding: 10px;
+  width: 80%;
+}
+
+.button_style {
+  text-align: center;
+  width: 85px;
+  line-height: 40px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button_style:active {
+  background-color: #999;
+  transform: scale(0.85);
+}
+
+.button_style:hover {
+  background-color: #ddd;
+}
+
+.button_style_space {
+  text-align: center;
+  width: 50%;
+  line-height: 40px;
+  margin-right: 5px;
+  color: #eee;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button_style_space:active {
+  background-color: #999;
+  transform: scale(0.85);
+}
+
+.button_style_space:hover {
+  background-color: #ddd;
+}
+
+.button_style_func {
+  text-align: center;
+  width: 15%;
+  line-height: 40px;
+  margin-right: 5px;
+  background-color: #999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button_style_func:active {
+  background-color: #565656;
+  transform: scale(0.85);
+}
+
+.button_style_func:hover {
+  background-color: #ddd;
+}
+
+.highlighted{
+  background-color: rgb(106, 106, 221);
+}
